@@ -239,18 +239,22 @@ namespace Playback
             var channelCount = 1;
             var signalGenerator = new SignalGenerator(sampleRate, channelCount);
             signalGenerator.Type = SignalGeneratorType.Sin;
-            signalGenerator.Frequency = 440;
+            signalGenerator.Frequency = Int32.Parse(txtFrecuencia.Text);
             signalGenerator.Gain = 0.5; //ganancia = toma la amplitud maxima
             var waveFormat = new WaveFormat(sampleRate, 16, channelCount);
-            var writer = new WaveFileWriter("tono.wav", waveFormat);
+            var writer = new WaveFileWriter(txtNombreArchivo.Text, waveFormat);
             var muestrasPorSegundo = sampleRate * channelCount;
             var buffer = new float[muestrasPorSegundo];
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < Int32.Parse(txtSegundos.Text); i++)
             {
                 var muestras = signalGenerator.Read(buffer, 0, muestrasPorSegundo);
                 writer.WriteSamples(buffer, 0, muestras);
             }
             writer.Dispose();
         }
+
+  
+
+       
     }
 }
