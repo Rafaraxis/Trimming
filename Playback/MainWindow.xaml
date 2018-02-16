@@ -21,13 +21,16 @@
         <Slider x:Name="sldVolumen" HorizontalAlignment="Left" Margin="411,55,0,0" VerticalAlignment="Top" Width="21" Orientation="Vertical" Height="114" Maximum="1.5" Value="1" 
                 Thumb.DragCompleted="sldVolumen_DragCompleted" ValueChanged="sldVolumen_ValueChanged"/>
         <Button x:Name="btnCortar" Content="Cortar" HorizontalAlignment="Left" Margin="51,164,0,0" VerticalAlignment="Top" Width="75" Click="btnCortar_Click"/>
-        <Button x:Name="btnCrearFrecuencia" Content="Frecuencia" HorizontalAlignment="Left" Margin="131,164,0,0" VerticalAlignment="Top" Width="75" Click="btnCrearFrecuencia_Click"/>
+        <Button x:Name="btnCrearFrecuencia" Content="Frecuencia" HorizontalAlignment="Left" Margin="51,246,0,0" VerticalAlignment="Top" Width="75" Click="btnCrearFrecuencia_Click"/>
         <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="51,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" />
         <TextBox x:Name="txtSegundos" HorizontalAlignment="Left" Height="23" Margin="149,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="txtNombreArchivo" HorizontalAlignment="Left" Height="23" Margin="287,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <TextBlock x:Name="textBlockFrecuencia" HorizontalAlignment="Left" Margin="57,225,0,0" TextWrapping="Wrap" Text="Frecuencia" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlockSegundos" HorizontalAlignment="Left" Margin="176,225,0,0" TextWrapping="Wrap" Text="Tiempo" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlockNombreArchivo" HorizontalAlignment="Left" Margin="305,225,0,0" TextWrapping="Wrap" Text="Nombre de archivo" VerticalAlignment="Top"/>
+        <Button x:Name="btnOffset" Content="Genera archivo von OffsetProvider" HorizontalAlignment="Left" Margin="131,164,0,0" VerticalAlignment="Top" Width="245" Click="btnOffset_Click"/>
+        <Button x:Name="btnReproducirSeñal" Content="Reproducir Señal" HorizontalAlignment="Left" Margin="51,276,0,0" VerticalAlignment="Top" Width="104" Click="btnReproducirSeñal_Click"/>
+        <Slider x:Name="sldFrecuencia" HorizontalAlignment="Left" Margin="255,266,0,0" VerticalAlignment="Top" Width="167" Minimum="20" Maximum="19994" Value="5014" ValueChanged="sldFrecuencia_ValueChanged"/>
 
     </Grid>
 </Window>

@@ -32,6 +32,8 @@ namespace Playback
         bool dragging = false;
         private VolumeWaveProvider16 volumeProvider;
 
+        SignalGenerator signalGenerator;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -253,6 +255,42 @@ namespace Playback
             writer.Dispose();
         }
 
-   
+        private void btnOffset_Click(object sender, RoutedEventArgs e)
+        {
+            var sampleRate = 44100;
+            var channelCount = 1;
+            var seconds = 10;
+            var signalGenerator = new SignalGenerator(sampleRate, channelCount);
+            signalGenerator.Type = SignalGeneratorType.Sin;
+            signalGenerator.Frequency = 750;
+            signalGenerator.Gain = 0.5;
+            var offsetProvider = new OffsetSampleProvider(signalGenerator);
+            offsetProvider.TakeSamples = sampleRate * seconds * channelCount;
+            WaveFileWriter.CreateWaveFile16("Sonido.wav", offsetProvider);
+        }
+
+        private void btnReproducirSeñal_Click(object sender, RoutedEventArgs e)
+        {
+            var sampleRate = 44100;
+            var channelCount = 1;
+            var seconds = 10;
+            signalGenerator = new SignalGenerator(sampleRate, channelCount);
+            signalGenerator.Type = SignalGeneratorType.Sin;
+            signalGenerator.Frequency = 750;
+            signalGenerator.Gain = 0.5;
+            var offsetProvider = new OffsetSampleProvider(signalGenerator);
+            offsetProvider.TakeSamples = sampleRate * seconds * channelCount;
+            output = new WaveOutEvent();
+            output.Init(signalGenerator);
+            output.Play();
+        }
+
+        private void sldFrecuencia_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (sldFrecuencia != null && signalGenerator != null)
+            {
+                signalGenerator.Frequency = sldFrecuencia.Value;
+            }
+        }
     }
 }
